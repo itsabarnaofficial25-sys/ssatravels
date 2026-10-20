@@ -1,0 +1,3025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSA Travels - Premium Travel Services | Your Journey, Our Priority</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --green-950: #052E1B;
+            --green-900: #064A2C;
+            --green-800: #0B5E3C;
+            --green-700: #0D7A4A;
+            --green-600: #0D8C4C;
+            --green-500: #10A35A;
+            --green-400: #14C06A;
+            --green-300: #2EE88A;
+            --green-200: #7BF5BD;
+            --green-100: #B5FAD8;
+            --green-50: #E0FDF0;
+            --red-600: #DC2626;
+            --red-500: #EF4444;
+            --gold: #D4A853;
+            --gold-light: #F0D78C;
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --black: #0A0A0A;
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 30px 70px rgba(0, 0, 0, 0.2);
+            --shadow-green: 0 10px 40px rgba(13, 140, 76, 0.25);
+            --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+            --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--white);
+            color: var(--gray-800);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--green-500);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--green-600);
+        }
+
+        /* ========== PRELOADER ========== */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--green-100);
+            border-top: 4px solid var(--green-600);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ========== NAVBAR ========== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s var(--ease-out-expo);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: var(--green-800);
+            padding: 12px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            z-index: 1001;
+        }
+
+        .logo-icon-wrapper {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-icon-bg {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--green-400), var(--green-300));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 22px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(46, 232, 138, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .logo-icon-pulse {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            width: calc(100% + 8px);
+            height: calc(100% + 8px);
+            background: var(--green-300);
+            border-radius: 18px;
+            opacity: 0.3;
+            animation: logoPulse 2s infinite;
+            z-index: 0;
+        }
+
+        @keyframes logoPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-text span {
+            color: var(--green-300);
+        }
+
+        .navbar.scrolled .logo-text {
+            text-shadow: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .navbar.scrolled .nav-links a {
+            text-shadow: none;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green-300);
+            transition: width 0.3s var(--ease-out-expo);
+            border-radius: 1px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--green-200);
+        }
+
+        .nav-links a:hover::before,
+        .nav-links a.active::before {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--green-400), var(--green-500));
+            color: var(--white) !important;
+            padding: 10px 22px !important;
+            border-radius: var(--radius-full);
+            box-shadow: 0 8px 25px rgba(46, 232, 138, 0.25);
+            transition: all 0.3s ease !important;
+            text-shadow: none !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(46, 232, 138, 0.4);
+        }
+
+        .nav-cta::before {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--green-950);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.5s var(--ease-out-expo);
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-inner {
+            text-align: center;
+        }
+
+        .mobile-menu-inner a {
+            display: block;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            padding: 16px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-inner a:hover {
+            color: var(--green-300);
+        }
+
+        /* ========== HERO ========== */
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .hero-slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-slide:nth-child(1) .hero-slide-overlay {
+            background: linear-gradient(135deg, rgba(5, 46, 27, 0.85) 0%, rgba(6, 74, 44, 0.7) 50%, rgba(13, 140, 76, 0.4) 100%);
+        }
+
+        .hero-slide:nth-child(2) .hero-slide-overlay {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.85) 0%, rgba(6, 74, 44, 0.7) 50%, rgba(13, 122, 74, 0.4) 100%);
+        }
+
+        .hero-slide:nth-child(3) .hero-slide-overlay {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.85) 0%, rgba(6, 74, 44, 0.75) 50%, rgba(16, 163, 90, 0.4) 100%);
+        }
+
+        .hero-slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+            color: var(--white);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s var(--ease-out-back) both;
+        }
+
+        .hero-slide-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s 0.2s var(--ease-out-back) both;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-slide-content h1 span {
+            color: var(--green-300);
+        }
+
+        .hero-slide-content p {
+            font-size: 19px;
+            max-width: 550px;
+            opacity: 0.9;
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s 0.4s var(--ease-out-back) both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s 0.6s var(--ease-out-back) both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-hero-primary {
+            background: linear-gradient(135deg, var(--green-600), var(--green-500));
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-green);
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(13, 140, 76, 0.4);
+        }
+
+        .btn-hero-outline {
+            background: transparent;
+            color: var(--white);
+            padding: 16px 36px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+        }
+
+        .carousel-controls {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .carousel-dot.active {
+            background: var(--white);
+            border-color: var(--green-400);
+            box-shadow: 0 0 20px rgba(46, 232, 138, 0.5);
+            width: 35px;
+            border-radius: 6px;
+        }
+
+        .carousel-arrow {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-arrow:hover {
+            background: var(--white);
+            color: var(--green-700);
+        }
+
+        /* ========== SECTIONS ========== */
+        .section-padding {
+            padding: 120px 40px;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: var(--green-50);
+            color: var(--green-700);
+            padding: 10px 22px;
+            border-radius: var(--radius-full);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            border: 1px solid var(--green-100);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--gray-900);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .section-title span {
+            color: var(--green-600);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray-500);
+            max-width: 650px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+
+        /* ========== ABOUT ========== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-main-img {
+            width: 100%;
+            height: 500px;
+            background-image: url(./images/about1.jpg);
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 180px;
+            color: var(--green-600);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-main-img::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(46, 232, 138, 0.2) 0%, transparent 70%);
+            animation: aboutGlow 5s infinite ease-in-out;
+        }
+
+        @keyframes aboutGlow {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.3);
+            }
+        }
+
+        .about-floating-card {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            animation: floatCard 4s infinite ease-in-out;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .about-floating-card .icon-circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--green-600), var(--green-400));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .about-floating-card h4 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--green-700);
+        }
+
+        .about-floating-card p {
+            font-size: 13px;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        .about-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 20px;
+        }
+
+        .about-content .lead {
+            font-size: 18px;
+            color: var(--green-700);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .about-content p {
+            color: var(--gray-600);
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .about-feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .about-feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--gray-700);
+        }
+
+        .about-feature-list li i {
+            color: var(--green-600);
+            background: var(--green-50);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* ========== VEHICLES ========== */
+        .vehicle-showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .vehicle-showcase-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.4s var(--ease-out-expo);
+            cursor: pointer;
+            border: 1px solid var(--gray-100);
+        }
+
+        .vehicle-showcase-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--green-200);
+        }
+
+        .vehicle-showcase-image {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e8e8e8, #f5f5f5);
+        }
+
+        .vehicle-showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .vehicle-showcase-card:hover .vehicle-showcase-image img {
+            transform: scale(1.1);
+        }
+
+        .vehicle-showcase-image::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 70%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.15) 70%, transparent 100%);
+            z-index: 1;
+            transition: all 0.4s ease;
+        }
+
+        .vehicle-showcase-card:hover .vehicle-showcase-image::before {
+            background: linear-gradient(to top, rgba(13, 140, 76, 0.9) 0%, rgba(13, 140, 76, 0.6) 40%, rgba(13, 140, 76, 0.2) 70%, transparent 100%);
+        }
+
+        .vehicle-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2;
+            padding: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .vehicle-overlay-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .vehicle-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            align-self: flex-start;
+        }
+
+        .vehicle-overlay-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--white);
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .vehicle-meta {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .vehicle-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .btn-view-vehicle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-400);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            border: none;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            opacity: 1;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .vehicle-showcase-card:hover .btn-view-vehicle {
+            background: var(--green-300);
+        }
+
+        .vehicle-showcase-label {
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .vehicle-showcase-label .vehicle-name {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--gray-800);
+        }
+
+        .vehicle-showcase-label .vehicle-type-badge {
+            background: var(--green-50);
+            color: var(--green-700);
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            border: 1px solid var(--green-100);
+        }
+
+        /* ========== TESTIMONIALS ========== */
+        .testimonial-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .testimonial-carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .testimonial-card .quote-icon {
+            display: block;
+            font-size: 50px;
+            color: var(--green-100);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-stars {
+            color: #F59E0B;
+            font-size: 17px;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            color: var(--gray-600);
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            background: linear-gradient(135deg, var(--green-500), var(--green-300));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .testimonial-author-info {
+            text-align: left;
+        }
+
+        .testimonial-author-info h5 {
+            font-size: 15px;
+            color: var(--gray-800);
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-author-info p {
+            font-size: 12px;
+            color: var(--gray-500);
+            margin: 0;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--green-600);
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        /* ========== CONTACT ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--green-800), var(--green-600));
+            border-radius: var(--radius-xl);
+            padding: 45px 35px;
+            color: var(--white);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .contact-info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .contact-info-card>p {
+            opacity: 0.85;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-info-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .contact-info-item h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .contact-info-item p {
+            font-size: 13px;
+            opacity: 0.85;
+            margin: 0;
+        }
+
+        .contact-form-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 45px 35px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-100);
+        }
+
+        .contact-form-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 25px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: var(--gray-50);
+            color: var(--gray-800);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--green-500);
+            box-shadow: 0 0 0 4px rgba(16, 163, 90, 0.1);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--green-700), var(--green-500));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-green);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(13, 140, 76, 0.35);
+        }
+
+        /* ========== LEGAL PAGES ========== */
+        .legal-section {
+            padding: 130px 40px 70px;
+            background: var(--white);
+        }
+
+        .legal-section.alt-bg {
+            background: var(--gray-50);
+        }
+
+        .legal-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .legal-header {
+            background: linear-gradient(135deg, var(--green-800), var(--green-600));
+            padding: 45px 35px;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .legal-header.delete-header {
+            background: linear-gradient(135deg, #991B1B, #DC2626);
+        }
+
+        .legal-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .legal-header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+
+        .legal-header .last-updated {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-size: 12px;
+            margin-top: 18px;
+        }
+
+        .legal-content {
+            padding: 40px 35px;
+        }
+
+        .legal-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--green-700);
+            margin: 25px 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--green-100);
+        }
+
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .legal-content h2.delete-title {
+            color: var(--red-600);
+            border-bottom-color: #FECACA;
+        }
+
+        .legal-content p {
+            margin-bottom: 12px;
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        .legal-content ul {
+            margin: 12px 0 12px 22px;
+        }
+
+        .legal-content ul li {
+            margin-bottom: 6px;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+
+        .highlight-box {
+            background: var(--green-50);
+            padding: 18px 22px;
+            border-radius: 14px;
+            margin: 12px 0;
+            border-left: 4px solid var(--green-500);
+            font-size: 14px;
+        }
+
+        .warning-box {
+            background: #FEF2F2;
+            padding: 18px 22px;
+            border-radius: 14px;
+            margin: 12px 0;
+            border-left: 4px solid var(--red-500);
+            color: #991B1B;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .steps-box {
+            background: var(--gray-50);
+            padding: 22px;
+            border-radius: 14px;
+            margin: 16px 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            align-items: flex-start;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            background: var(--green-600);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 13px;
+        }
+
+        .step-content h4 {
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .step-content p {
+            color: var(--gray-600);
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .legal-footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-200);
+            flex-wrap: wrap;
+        }
+
+        .legal-footer-links a {
+            color: var(--green-600);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .legal-footer-links a:hover {
+            color: var(--green-700);
+            text-decoration: underline;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 60px 40px 25px;
+        }
+
+        .footer-grid {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.2fr;
+            gap: 40px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .footer h5 {
+            font-size: 15px;
+            color: var(--green-300);
+            margin-bottom: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--green-300);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            max-width: 1300px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* ========== BACK TO TOP ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--green-600), var(--green-500));
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 17px;
+            z-index: 998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 25px rgba(13, 140, 76, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(15px);
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: var(--green-700);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(13, 140, 76, 0.5);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 1200px) {
+            .vehicle-showcase-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .section-padding {
+                padding: 80px 30px;
+            }
+
+            .hero-slide-content h1 {
+                font-size: 48px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .about-main-img {
+                height: 400px;
+            }
+
+            .vehicle-showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-carousel {
+                min-height: 550px;
+            }
+
+            .hero-slide-content {
+                padding: 0 25px;
+            }
+
+            .hero-slide-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-slide-content p {
+                font-size: 15px;
+                max-width: 100%;
+            }
+
+            .hero-badge {
+                font-size: 11px;
+                letter-spacing: 2px;
+                padding: 8px 16px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-hero-primary,
+            .btn-hero-outline {
+                justify-content: center;
+                padding: 14px 28px;
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .section-subtitle {
+                font-size: 14px;
+            }
+
+            .section-padding {
+                padding: 60px 20px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .about-main-img {
+                height: 300px;
+                font-size: 100px;
+            }
+
+            .about-floating-card {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 20px;
+                padding: 20px;
+            }
+
+            .about-floating-card h4 {
+                font-size: 24px;
+            }
+
+            .about-content h3 {
+                font-size: 26px;
+            }
+
+            .about-feature-list {
+                grid-template-columns: 1fr;
+            }
+
+            .vehicle-showcase-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .vehicle-showcase-image {
+                height: 220px;
+            }
+
+            .vehicle-overlay-content h3 {
+                font-size: 22px;
+            }
+
+            .vehicle-overlay {
+                padding: 15px;
+            }
+
+            .btn-view-vehicle {
+                padding: 8px 16px;
+                font-size: 11px;
+            }
+
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+            }
+
+            .testimonial-card .quote-icon {
+                font-size: 40px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .legal-section {
+                padding: 100px 20px 50px;
+            }
+
+            .legal-header {
+                padding: 30px 20px;
+            }
+
+            .legal-header h1 {
+                font-size: 26px;
+            }
+
+            .legal-content {
+                padding: 25px 20px;
+            }
+
+            .legal-content h2 {
+                font-size: 18px;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .carousel-controls {
+                bottom: 30px;
+                gap: 15px;
+            }
+
+            .carousel-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .carousel-dot {
+                width: 10px;
+                height: 10px;
+            }
+
+            .carousel-dot.active {
+                width: 28px;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 15px;
+                width: 42px;
+                height: 42px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-carousel {
+                min-height: 500px;
+            }
+
+            .hero-slide-content h1 {
+                font-size: 26px;
+            }
+
+            .hero-slide-content p {
+                font-size: 13px;
+            }
+
+            .hero-badge {
+                font-size: 10px;
+                padding: 6px 12px;
+                letter-spacing: 1px;
+            }
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-icon-wrapper {
+                width: 40px;
+                height: 40px;
+            }
+
+            .logo-icon-bg {
+                font-size: 18px;
+                border-radius: 10px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .section-label {
+                font-size: 11px;
+                padding: 8px 14px;
+            }
+
+            .about-main-img {
+                height: 250px;
+                font-size: 80px;
+            }
+
+            .vehicle-showcase-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .vehicle-showcase-image {
+                height: 180px;
+            }
+
+            .vehicle-overlay-content h3 {
+                font-size: 18px;
+            }
+
+            .vehicle-badge {
+                font-size: 9px;
+                padding: 4px 10px;
+            }
+
+            .vehicle-meta span {
+                font-size: 10px;
+            }
+
+            .vehicle-showcase-label {
+                padding: 10px 12px;
+            }
+
+            .vehicle-showcase-label .vehicle-name {
+                font-size: 12px;
+            }
+
+            .vehicle-showcase-label .vehicle-type-badge {
+                font-size: 9px;
+                padding: 4px 8px;
+            }
+
+            .testimonial-card {
+                padding: 25px 15px;
+            }
+
+            .testimonial-text {
+                font-size: 13px;
+            }
+
+            .testimonial-card .quote-icon {
+                font-size: 35px;
+            }
+
+            .testimonial-stars {
+                font-size: 14px;
+            }
+
+            .testimonial-avatar {
+                width: 40px;
+                height: 40px;
+                min-width: 40px;
+                font-size: 16px;
+            }
+
+            .testimonial-author-info h5 {
+                font-size: 13px;
+            }
+
+            .testimonial-author-info p {
+                font-size: 11px;
+            }
+
+            .contact-info-card,
+            .contact-form-card {
+                padding: 25px 20px;
+            }
+
+            .contact-info-card h3 {
+                font-size: 22px;
+            }
+
+            .mobile-menu-inner a {
+                font-size: 18px;
+                padding: 14px;
+            }
+
+            .legal-section {
+                padding: 80px 12px 40px;
+            }
+
+            .legal-header {
+                padding: 25px 15px;
+            }
+
+            .legal-header h1 {
+                font-size: 22px;
+            }
+
+            .legal-content {
+                padding: 20px 15px;
+            }
+
+            .legal-content h2 {
+                font-size: 16px;
+            }
+
+            .footer {
+                padding: 40px 20px 20px;
+            }
+        }
+
+        /* ========== INNOVATIVE LEGAL PAGES ========== */
+        .innovative-card {
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            border: none;
+        }
+
+        .innovative-header {
+            background: linear-gradient(135deg, #064A2C 0%, #0D8C4C 30%, #10A35A 60%, #14C06A 100%);
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease infinite;
+            padding: 60px 40px 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .innovative-header::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .innovative-header::after {
+            content: '';
+            position: absolute;
+            bottom: -60px;
+            left: -60px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+        }
+
+        .delete-innovative-header {
+            background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 30%, #DC2626 60%, #EF4444 100%);
+            background-size: 200% 200%;
+            animation: gradientMove 6s ease infinite;
+        }
+
+        .header-icon-wrapper {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+        }
+
+        .header-icon-circle {
+            width: 90px;
+            height: 90px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            position: relative;
+            z-index: 2;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .delete-circle {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .header-icon-rings span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: ringPulse 2s ease-out infinite;
+        }
+
+        .header-icon-rings span:nth-child(1) {
+            width: 110px;
+            height: 110px;
+            animation-delay: 0s;
+        }
+
+        .header-icon-rings span:nth-child(2) {
+            width: 130px;
+            height: 130px;
+            animation-delay: 0.5s;
+        }
+
+        .header-icon-rings span:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            animation-delay: 1s;
+        }
+
+        @keyframes ringPulse {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.3);
+            }
+        }
+
+        .innovative-content {
+            padding: 40px;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .trust-badge {
+            background: var(--green-50);
+            color: var(--green-700);
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--green-200);
+            transition: all 0.3s ease;
+        }
+
+        .trust-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(13, 140, 76, 0.2);
+        }
+
+        .trust-badge i {
+            font-size: 16px;
+            color: var(--green-500);
+        }
+
+        .innovative-highlight {
+            background: linear-gradient(135deg, var(--green-50), #E8F8F0);
+            border-left: 4px solid var(--green-500);
+            padding: 20px 25px;
+            border-radius: 16px;
+            margin: 20px 0;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight-item {
+            font-size: 14px;
+            color: var(--gray-700);
+        }
+
+        .privacy-accordion {
+            margin: 25px 0;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--gray-200);
+            border-radius: 14px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item.active {
+            border-color: var(--green-300);
+            box-shadow: 0 4px 20px rgba(13, 140, 76, 0.08);
+        }
+
+        .accordion-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            transition: all 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-header {
+            background: var(--green-50);
+            color: var(--green-700);
+        }
+
+        .accordion-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--green-100);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-600);
+            font-size: 15px;
+        }
+
+        .accordion-arrow {
+            margin-left: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+        }
+
+        .accordion-item.active .accordion-body {
+            max-height: 500px;
+            padding: 20px;
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--gray-100);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-card i {
+            color: var(--green-500);
+            font-size: 16px;
+        }
+
+        .use-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .use-list li {
+            padding: 10px 0;
+            font-size: 14px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .use-list li:last-child {
+            border-bottom: none;
+        }
+
+        .sharing-notice {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: #FFF7ED;
+            border-radius: 12px;
+            border-left: 3px solid #F59E0B;
+        }
+
+        .sharing-notice i {
+            font-size: 30px;
+            color: #F59E0B;
+        }
+
+        .contact-card-mini {
+            background: var(--green-50);
+            border-radius: 16px;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+            border: 1px solid var(--green-100);
+        }
+
+        .contact-card-mini.delete-contact {
+            background: #FEF2F2;
+            border-color: #FECACA;
+        }
+
+        .contact-card-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .contact-card-left i {
+            font-size: 24px;
+            color: var(--green-600);
+        }
+
+        .delete-contact .contact-card-left i {
+            color: var(--red-500);
+        }
+
+        .contact-card-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        .contact-card-right a {
+            padding: 10px 18px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--green-600);
+            color: var(--white);
+        }
+
+        .contact-card-right a:hover {
+            background: var(--green-700);
+            transform: translateY(-2px);
+        }
+
+        /* Comparison Cards */
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .comparison-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-card {
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid var(--gray-200);
+        }
+
+        .comparison-card.deleted {
+            background: #FEF2F2;
+            border-color: #FECACA;
+        }
+
+        .comparison-card.retained {
+            background: #FFF7ED;
+            border-color: #FDE68A;
+        }
+
+        .comparison-icon {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .comparison-card.deleted .comparison-icon {
+            color: #DC2626;
+        }
+
+        .comparison-card.retained .comparison-icon {
+            color: #F59E0B;
+        }
+
+        .comparison-card h4 {
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .comparison-card ul li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--gray-600);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-card ul li::before {
+            content: '•';
+            margin-right: 8px;
+        }
+
+        .comparison-card.deleted ul li::before {
+            color: #DC2626;
+        }
+
+        .comparison-card.retained ul li::before {
+            color: #F59E0B;
+        }
+
+        .retention-note {
+            font-size: 11px;
+            color: var(--gray-500);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .innovative-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gray-800);
+            margin: 30px 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 24px;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 50px;
+            margin: 25px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 22px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--green-200);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 45px;
+            height: 45px;
+            background: var(--green-600);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 16px;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(13, 140, 76, 0.3);
+        }
+
+        .timeline-item:last-child .timeline-marker {
+            background: var(--gold);
+            font-size: 18px;
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-xs);
+        }
+
+        .timeline-content h4 {
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .timeline-content p {
+            font-size: 13px;
+            color: var(--gray-600);
+            margin: 0;
+        }
+
+        .timeline-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background: var(--green-600);
+            color: var(--white);
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-btn:hover {
+            background: var(--green-700);
+            transform: translateY(-2px);
+        }
+
+        .innovative-warning {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-left: 4px solid #DC2626;
+            padding: 18px 22px;
+            border-radius: 14px;
+            margin: 15px 0;
+        }
+
+        .warning-icon {
+            font-size: 28px;
+            color: #DC2626;
+        }
+
+        .warning-text {
+            font-size: 14px;
+            color: #991B1B;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <div class="logo-icon-wrapper">
+                    <div class="logo-icon-pulse"></div>
+                    <div class="logo-icon-bg"><i class="fas fa-car-side"></i></div>
+                </div>
+                <span class="logo-text">SSA <span>Travels</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#vehicles">Vehicles</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a onclick="scrollToSection('privacy-policy')">Privacy</a></li>
+                <li><a onclick="scrollToSection('delete-account')">Delete</a></li>
+                <li><a href="#contact" class="nav-cta"><i class="fas fa-calendar-check"></i> Book Ride</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#vehicles">Vehicles</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a onclick="scrollToSection('privacy-policy')">Privacy Policy</a>
+            <a onclick="scrollToSection('delete-account')">Delete Account</a>
+            <a href="#contact" style="color:var(--green-300);">Book Ride</a>
+        </div>
+    </div>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero-carousel" id="home">
+        <div class="hero-slide active">
+            <div class="hero-slide-bg"
+                style="background-image:url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=80');">
+            </div>
+            <div class="hero-slide-overlay"></div>
+            <div class="hero-slide-content">
+                <div class="hero-badge">Premium Travel Service</div>
+                <h1>Travel in <span>Comfort</span><br>& Safety</h1>
+                <p>Experience India's most reliable travel service with our fleet of premium vehicles.</p>
+                <div class="hero-buttons"><a href="#vehicles" class="btn-hero-primary"><i class="fas fa-car"></i> View
+                        Vehicles</a><a href="#contact" class="btn-hero-outline"><i class="fas fa-phone"></i> Contact
+                        Us</a></div>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <div class="hero-slide-bg"
+                style="background-image:url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=1920&q=80');">
+            </div>
+            <div class="hero-slide-overlay"></div>
+            <div class="hero-slide-content">
+                <div class="hero-badge">5000+ Happy Customers</div>
+                <h1>Your <span>Journey</span>,<br>Our Priority</h1>
+                <p>From airport transfers to outstation trips, we ensure every ride is smooth and comfortable.</p>
+                <div class="hero-buttons"><a href="#vehicles" class="btn-hero-primary"><i class="fas fa-tag"></i> Check
+                        Prices</a><a href="#testimonials" class="btn-hero-outline"><i class="fas fa-star"></i>
+                        Reviews</a></div>
+            </div>
+        </div>
+        <div class="hero-slide">
+            <div class="hero-slide-bg"
+                style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=80');">
+            </div>
+            <div class="hero-slide-overlay"></div>
+            <div class="hero-slide-content">
+                <div class="hero-badge">8 Vehicles | 24/7 Service</div>
+                <h1><span>Affordable</span> Travel<br>Across India</h1>
+                <p>Transparent rates starting at just ₹12/km. No hidden fees, no surprises.</p>
+                <div class="hero-buttons"><a href="#contact" class="btn-hero-primary"><i
+                            class="fas fa-calendar-check"></i> Book Now</a><a href="#vehicles"
+                        class="btn-hero-outline"><i class="fas fa-list"></i> All Vehicles</a></div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <div class="carousel-arrow" id="heroPrev"><i class="fas fa-chevron-left"></i></div>
+            <div class="carousel-dots" id="heroDots">
+                <div class="carousel-dot active" data-index="0"></div>
+                <div class="carousel-dot" data-index="1"></div>
+                <div class="carousel-dot" data-index="2"></div>
+            </div>
+            <div class="carousel-arrow" id="heroNext"><i class="fas fa-chevron-right"></i></div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section-padding" id="about" style="background:var(--white);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up"><span class="section-label">About Us</span>
+                <h2 class="section-title">Why Choose<span> SSA Travels</span>?</h2>
+                <p class="section-subtitle">We combine comfort, safety, and affordability for exceptional travel across
+                    India.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-visual" data-aos="fade-right">
+                    <div class="about-main-img"></div>
+                    <div class="about-floating-card">
+                        <div class="icon-circle"><i class="fas fa-award"></i></div>
+                        <div>
+                            <h4>10+</h4>
+                            <p>Years of Excellence</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content" data-aos="fade-left">
+                    <h3>India's Trusted Travel Partner</h3>
+                    <p class="lead">Over a decade of safe, comfortable journeys.</p>
+                    <p>SSA Travels began with a simple mission: make travel reliable and affordable. Today, we operate a
+                        fleet of well-maintained vehicles serving thousands of happy customers across India.</p>
+                    <ul class="about-feature-list">
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> Professional Drivers</li>
+                        <li><i class="fas fa-check"></i> GPS Tracked</li>
+                        <li><i class="fas fa-check"></i> Sanitized Vehicles</li>
+                        <li><i class="fas fa-check"></i> Transparent Pricing</li>
+                        <li><i class="fas fa-check"></i> Instant Booking</li>
+                    </ul><a href="#contact" class="btn-hero-primary"><i class="fas fa-envelope"></i> Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== VEHICLES ========== -->
+    <section class="section-padding" id="vehicles" style="background:var(--green-50);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up"><span class="section-label">Our Fleet</span>
+                <h2 class="section-title">Choose Your <span>Perfect Ride</span></h2>
+                <p class="section-subtitle">Well-maintained vehicles ready for your next journey.</p>
+            </div>
+            <div class="vehicle-showcase-grid" id="vehicleGrid"></div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section-padding" id="testimonials" style="background:var(--white);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up"><span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Our <span>Customers</span> Say</h2>
+                <p class="section-subtitle">Real feedback from real travelers.</p>
+            </div>
+            <div class="testimonial-carousel-wrapper" data-aos="fade-up">
+                <div class="testimonial-carousel-track" id="testimonialTrack"></div>
+                <div class="testimonial-dots" id="testimonialDots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRIVACY POLICY - INNOVATIVE ========== -->
+    <section class="legal-section" id="privacy-policy">
+        <div class="container">
+            <div class="legal-card innovative-card">
+                <!-- Animated Header with Icon -->
+                <div class="legal-header innovative-header">
+                    <div class="header-icon-wrapper">
+                        <div class="header-icon-circle">
+                            <i class="fas fa-shield-haltered"></i>
+                        </div>
+                        <div class="header-icon-rings">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <h1>Your Privacy Matters</h1>
+                    <p>SSA Travels is committed to protecting your personal data</p>
+                    <div class="last-updated"><i class="fas fa-sync-alt fa-spin"></i> Last Updated: May 30, 2026</div>
+                </div>
+
+                <div class="legal-content innovative-content">
+                    <!-- Trust Badges -->
+                    <div class="trust-badges">
+                        <div class="trust-badge"><i class="fas fa-lock"></i> SSL Encrypted</div>
+                        <div class="trust-badge"><i class="fas fa-user-shield"></i> GDPR Ready</div>
+                        <div class="trust-badge"><i class="fas fa-ban"></i> No Data Selling</div>
+                    </div>
+
+                    <!-- Key Info Card -->
+                    <div class="highlight-box innovative-highlight">
+                        <div class="highlight-grid">
+                            <div class="highlight-item"><strong>App:</strong> SSA Travels</div>
+                            <div class="highlight-item"><strong>App Develop Company:</strong> Rohil Technologies,
+                                Virudhunagar</div>
+                            <div class="highlight-item"><strong>Support:</strong> ssasahinaabideen@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Style Sections -->
+                    <div class="privacy-accordion">
+                        <div class="accordion-item active">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-icon"><i class="fas fa-database"></i></span>
+                                <span>Information We Collect</span>
+                                <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="info-cards">
+                                    <div class="info-card"><i class="fas fa-user"></i><strong>Personal Info:</strong>
+                                        Name, Phone, Email</div>
+                                    <div class="info-card"><i class="fas fa-map-pin"></i><strong>Location:</strong>
+                                        Pickup & Drop addresses</div>
+                                    <div class="info-card"><i class="fas fa-calendar"></i><strong>Travel Data:</strong>
+                                        Dates, Vehicle preferences</div>
+                                    <div class="info-card"><i class="fas fa-history"></i><strong>Usage:</strong> Booking
+                                        history, interactions</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-icon"><i class="fas fa-cogs"></i></span>
+                                <span>How We Use Your Data</span>
+                                <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <ul class="use-list">
+                                    <li><i class="fa-solid fa-car" style="color:#10A35A;"></i> Process and confirm your
+                                        bookings</li>
+                                    <li> <i class="fa-solid fa-car" style="color: #10A35A;"></i> Send WhatsApp/SMS trip
+                                        confirmations</li>
+                                    <li><i class="fa-solid fa-car" style="color: #10A35A;"></i> Improve customer
+                                        experience</li>
+                                    <li><i class="fa-solid fa-car" style="color: #10A35A;"></i> Communicate trip updates
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-icon"><i class="fas fa-share-alt"></i></span>
+                                <span>Data Sharing Policy</span>
+                                <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <div class="sharing-notice">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                    <p>We <strong>NEVER</strong> sell your personal data. Data is shared only with your
+                                        consent or when legally required.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header" onclick="toggleAccordion(this)">
+                                <span class="accordion-icon"><i class="fas fa-clock"></i></span>
+                                <span>Data Retention</span>
+                                <span class="accordion-arrow"><i class="fas fa-chevron-down"></i></span>
+                            </div>
+                            <div class="accordion-body">
+                                <p>Booking records are retained for <strong>3 years</strong> for reference. You can
+                                    request deletion anytime.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Card -->
+                    <div class="contact-card-mini">
+                        <div class="contact-card-left">
+                            <i class="fas fa-headset"></i>
+                            <span>Have questions about your data?</span>
+                        </div>
+                        <div class="contact-card-right">
+                            <a href="mailto:ssasahinaabideen@gmail.com"><i class="fas fa-envelope"></i> Email Us</a>
+                            <a href="tel:+916374049582"><i class="fas fa-phone"></i> Call Us</a>
+                        </div>
+                    </div>
+
+                    <div class="legal-footer-links">
+                        <a onclick="scrollToSection('home')"><i class="fas fa-home"></i> Back to Home</a>
+                        <a onclick="scrollToSection('delete-account')"><i class="fas fa-trash-alt"></i> Account Deletion
+                            →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DELETE ACCOUNT - INNOVATIVE ========== -->
+    <section class="legal-section alt-bg" id="delete-account">
+        <div class="container">
+            <div class="legal-card innovative-card delete-card">
+                <!-- Animated Header -->
+                <div class="legal-header innovative-header delete-innovative-header">
+                    <div class="header-icon-wrapper">
+                        <div class="header-icon-circle delete-circle">
+                            <i class="fas fa-user-times"></i>
+                        </div>
+                        <div class="header-icon-rings delete-rings">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <h1>Account Deletion</h1>
+                    <p>We're sorry to see you go. Here's how to delete your account.</p>
+                    <div class="last-updated"><i class="fas fa-info-circle"></i> Policy Version 1.0 | April 30, 2026
+                    </div>
+                </div>
+
+                <div class="legal-content innovative-content">
+                    <!-- Warning Banner -->
+                    <div class="warning-box innovative-warning">
+                        <div class="warning-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="warning-text">
+                            <strong>Permanent Action:</strong> Account deletion is irreversible. All your data will be
+                            permanently removed from our systems.
+                        </div>
+                    </div>
+
+                    <!-- What Happens Section -->
+                    <h2 class="innovative-section-title"><span class="section-icon"></span> What Happens When You
+                        Delete?</h2>
+                    <div class="comparison-cards">
+                        <div class="comparison-card deleted">
+                            <div class="comparison-icon"><i class="fas fa-check-circle"></i></div>
+                            <h4>Will Be Deleted</h4>
+                            <ul>
+                                <li>Personal information</li>
+                                <li>Phone number & email</li>
+                                <li>Booking history</li>
+                                <li>Saved preferences</li>
+                                <li>Account credentials</li>
+                            </ul>
+                        </div>
+                        <div class="comparison-card retained">
+                            <div class="comparison-icon"><i class="fas fa-archive"></i></div>
+                            <h4>Will Be Retained</h4>
+                            <ul>
+                                <li>Anonymized statistics</li>
+                                <li>Legal/tax records</li>
+                                <li>Fraud prevention data</li>
+                            </ul>
+                            <p class="retention-note">Retained for 3-5 years as required by law</p>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Process -->
+                    <h2 class="innovative-section-title"><span class="section-icon"></span> Deletion Process</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <span>1</span>
+                                <div class="timeline-line"></div>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Send Request</h4>
+                                <p>Email <strong>ssasahinaabideen@gmail.com</strong> with subject: <strong>"Account
+                                        Deletion Request - SSA Travels"</strong></p>
+                                <a href="mailto:ssasahinaabideen@gmail.com?subject=Account%20Deletion%20Request%20-%20SSA%20Travels"
+                                    class="timeline-btn"><i class="fas fa-envelope"></i> Send Now</a>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <span>2</span>
+                                <div class="timeline-line"></div>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Verification</h4>
+                                <p>We verify your identity using your registered phone number and email.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <span>3</span>
+                                <div class="timeline-line"></div>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Processing</h4>
+                                <p>Your request is processed within <strong>7 business days</strong>.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-marker">
+                                <span>✓</span>
+                            </div>
+                            <div class="timeline-content">
+                                <h4>Confirmation</h4>
+                                <p>You receive a final confirmation email. Your account is now permanently deleted.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Card -->
+                    <div class="contact-card-mini delete-contact">
+                        <div class="contact-card-left">
+                            <i class="fas fa-question-circle"></i>
+                            <span>Need help before deleting?</span>
+                        </div>
+                        <div class="contact-card-right">
+                            <a href="mailto:ssasahinaabideen@gmail.com"><i class="fas fa-envelope"></i> Contact
+                                Support</a>
+                        </div>
+                    </div>
+
+                    <div class="legal-footer-links">
+                        <a onclick="scrollToSection('home')"><i class="fas fa-home"></i> Back to Home</a>
+                        <a onclick="scrollToSection('privacy-policy')"><i class="fas fa-shield-alt"></i> Privacy Policy
+                            →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========== CONTACT ========== -->
+    <section class="section-padding" id="contact" style="background:var(--gray-50);">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up"><span class="section-label">Contact Us</span>
+                <h2 class="section-title">Book Your <span>Ride</span></h2>
+                <p class="section-subtitle">Fill out the form and we'll get back within minutes.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-card" data-aos="fade-right">
+                    <h3>Get In Touch</h3>
+                    <p>Available 24/7 to assist you.</p>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h5>Phone</h5>
+                            <p>+91 63740 49582<br>+91 96064 23084</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>ssasahinaabideen@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h5>Office</h5>
+                            <p>1NO 57, NEAR EB OFFICE, BARMA COLONY, Virudhunagar-626001</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form-card" data-aos="fade-left">
+                    <h3><i class="fas fa-calendar-check" style="color:var(--green-600);margin-right:8px;"></i>Book a
+                        Ride</h3>
+                    <form id="bookingForm">
+                        <div class="form-row">
+                            <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your Name"
+                                    required id="formName"></div>
+                            <div class="form-group"><label>Phone *</label><input type="tel" id="formPhone"
+                                    placeholder="9876543210" required pattern="[0-9]{10}" maxlength="10"
+                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label>Email *</label><input type="email" id="formEmail"
+                                    placeholder="example@gmail.com" required></div>
+                            <div class="form-group"><label>Vehicle *</label><select required id="formVehicle">
+                                    <option value="">Select</option>
+                                </select></div>
+                        </div>
+                        <div class="form-group" style="margin-bottom:15px;"><label>Message</label><textarea
+                                placeholder="Tell us about your trip..." id="formMessage"></textarea></div><button
+                            type="button" class="btn-submit" onclick="sendBooking()"><i class="fas fa-paper-plane"></i>
+                            Send Booking Request</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>SSA Travels</h3>
+                <p>Your trusted travel partner in Virudhunagar. Safe, comfortable rides across Tamil Nadu & India since
+                    2016.</p>
+            </div>
+            <div>
+                <h5>Quick Links</h5>
+                <ul class="footer-links">
+                    <li><a onclick="scrollToSection('home')">Home</a></li>
+                    <li><a onclick="scrollToSection('about')">About</a></li>
+                    <li><a onclick="scrollToSection('vehicles')">Vehicles</a></li>
+                    <li><a onclick="scrollToSection('testimonials')">Reviews</a></li>
+                    <li><a onclick="scrollToSection('contact')">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Vehicles</h5>
+                <ul class="footer-links">
+                    <li><a onclick="scrollToSection('vehicles')">Ertiga</a></li>
+                    <li><a onclick="scrollToSection('vehicles')">Hatchback</a></li>
+                    <li><a onclick="scrollToSection('vehicles')">Sedan</a></li>
+                    <li><a onclick="scrollToSection('vehicles')">Innova</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5>Support</h5>
+                <ul class="footer-links">
+                    <li><a onclick="scrollToSection('privacy-policy')">Privacy Policy</a></li>
+                    <li><a onclick="scrollToSection('delete-account')">Delete Account</a></li>
+                    <li><a onclick="scrollToSection('contact')">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 SSA Travels. All rights reserved. | Your Journey, Our Priority.</p>
+            <p style="margin-top:8px;"><strong style="color:#2EE88A;">Developed By</strong> <span
+                    style="color:#fff;">Rohil Technologies</span></p>
+        </div>
+    </footer>
+
+    <button id="backToTop" class="back-to-top" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Accordion Toggle
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(i => {
+                if (i !== item) i.classList.remove('active');
+            });
+            item.classList.toggle('active');
+        }
+
+        AOS.init({ duration: 800, once: true, offset: 80 });
+        window.addEventListener('load', () => { setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 400); });
+        const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu');
+        if (hamburger && mobileMenu) { hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); }); document.querySelectorAll('.mobile-menu-inner a').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('active'); mobileMenu.classList.remove('active'); })); }
+        window.addEventListener('scroll', () => { document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50); });
+        const heroSlides = document.querySelectorAll('.hero-slide'), heroDotsEl = document.querySelectorAll('.carousel-dot');
+        if (heroSlides.length) { let idx = 0, ivl; function go(i) { heroSlides.forEach(s => s.classList.remove('active')); heroDotsEl.forEach(d => d.classList.remove('active')); heroSlides[i].classList.add('active'); heroDotsEl[i].classList.add('active'); idx = i; } function nxt() { go((idx + 1) % heroSlides.length); } function start() { clearInterval(ivl); ivl = setInterval(nxt, 5000); } document.getElementById('heroNext')?.addEventListener('click', () => { nxt(); start(); }); document.getElementById('heroPrev')?.addEventListener('click', () => { go((idx - 1 + heroSlides.length) % heroSlides.length); start(); }); heroDotsEl.forEach(d => d.addEventListener('click', () => { go(parseInt(d.dataset.index)); start(); })); start(); }
+
+        // Data
+        const vehicles = [{ img: './images/ertiga1.avif', name: 'Ertiga', brand: 'Maruti Ertiga', badge: '🔥 Most Popular', tag: 'MUV', seats: '7 Seats', rate: 'Hourly Rate' }, { img: './images/hatchback.avif', name: 'Hatchback', brand: 'Hatchback', badge: '💰 Budget Friendly', tag: 'Compact', seats: '4 Seats', rate: 'KM Rate' }, { img: './images/innova.jpg', name: 'Innova', brand: 'Innova', badge: '✨ Premium', tag: 'Outstation', seats: '7 Seats', rate: 'Hourly/KM' }, { img: './images/tavera.jpg', name: 'Tavera', brand: 'Tavera', badge: '🏔️ Adventure', tag: 'SUV', seats: '7 Seats', rate: 'Hourly/KM' }, { img: './images/tempo.png', name: 'Tempo', brand: 'Tempo Traveller', badge: '✨ Group', tag: 'Group', seats: '5 Seats', rate: 'KM Rate' }, { img: './images/van.avif', name: 'Tourist Van', brand: 'Tourist Van', badge: '🚌 Large Group', tag: 'Tourist', seats: '18 Seats', rate: 'KM Rate' }, { img: './images/van407.jpg', name: 'Van 407', brand: 'Van 407', badge: '🚌 Max Group', tag: 'Group Travel', seats: '25 Seats', rate: 'KM Rate' }, { img: './images/sedan.jfif', name: 'Sedan', brand: 'Sedan', badge: '✨ Comfort', tag: 'Comfort', seats: '4 Seats', rate: 'Hourly/KM' }];
+        const testimonials = [{ text: '"Booked an Ertiga for a family trip to Munnar. The driver was professional, the car was spotless, and the pricing was completely transparent."', name: 'Abideen', loc: 'Virudhunagar • Family Trip', initial: 'A' }, { text: '"Needed an urgent airport transfer and SSA Travels delivered within 20 minutes. Highly recommended!"', name: 'Abdul Kader', loc: 'Virudhunagar • Airport Transfer', initial: 'AK' }, { text: '"Used their service for a week-long business trip. Consistent quality, always on time. Professional from start to finish."', name: 'Das', loc: 'Aruppukottai • Business Travel', initial: 'D' }, { text: '"The transparency in pricing is what won me over. No hidden fees, no last-minute surprises. Truly honest service!"', name: 'Sudhimon', loc: 'Virudhunagar • Outstation Trip', initial: 'S' }];
+
+        // Render Vehicles
+        const grid = document.getElementById('vehicleGrid');
+        const select = document.getElementById('formVehicle');
+        vehicles.forEach(v => {
+            grid.innerHTML += `<div class="vehicle-showcase-card" data-aos="fade-up"><div class="vehicle-showcase-image"><img src="${v.img}" alt="${v.name}" loading="lazy"><div class="vehicle-overlay"><div class="vehicle-overlay-content"><span class="vehicle-badge">${v.badge}</span><h3>${v.name}</h3><div class="vehicle-meta"><span><i class="fas fa-user"></i> ${v.seats}</span><span><i class="fas fa-tachometer-alt"></i> ${v.rate}</span></div><button class="btn-view-vehicle" onclick="scrollToBooking('${v.name}')"><i class="fas fa-calendar-check"></i> Book Now</button></div></div></div><div class="vehicle-showcase-label"><span class="vehicle-name">${v.brand}</span><span class="vehicle-type-badge">${v.tag}</span></div></div>`;
+            select.innerHTML += `<option value="${v.name}">${v.name}</option>`;
+        });
+
+        // Render Testimonials
+        const track = document.getElementById('testimonialTrack');
+        const dotsContainer = document.getElementById('testimonialDots');
+        testimonials.forEach((t, i) => {
+            track.innerHTML += `<div class="testimonial-slide"><div class="testimonial-card"><div class="quote-icon">"</div><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">${t.text}</p><div class="testimonial-author"><div class="testimonial-avatar">${t.initial}</div><div class="testimonial-author-info"><h5>${t.name}</h5><p>${t.loc}</p></div></div></div></div>`;
+            dotsContainer.innerHTML += `<span class="testimonial-dot${i === 0 ? ' active' : ''}" data-index="${i}"></span>`;
+        });
+
+        // Testimonial Carousel
+        const tDots = document.querySelectorAll('.testimonial-dot');
+        if (track && tDots.length) { let ti = 0, tivl; function gos(i) { track.style.transform = `translateX(-${i * 100}%)`; tDots.forEach(d => d.classList.remove('active')); tDots[i].classList.add('active'); ti = i; } function nxtt() { gos((ti + 1) % tDots.length); } function startt() { clearInterval(tivl); tivl = setInterval(nxtt, 4000); } tDots.forEach(d => d.addEventListener('click', () => { gos(parseInt(d.dataset.index)); clearInterval(tivl); startt(); })); gos(0); startt(); }
+
+        function scrollToBooking(v) { document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); for (let o of select.options) { if (o.value === v || o.text.includes(v)) { o.selected = true; break; } } setTimeout(() => document.getElementById('formName')?.focus(), 700); }
+        function scrollToSection(id) { const el = document.getElementById(id); if (el) { el.scrollIntoView({ behavior: 'smooth' }); } }
+        window.scrollToBooking = scrollToBooking; window.scrollToSection = scrollToSection;
+        const btt = document.getElementById('backToTop'); window.addEventListener('scroll', () => { btt.classList.toggle('show', window.scrollY > 400); }); btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        function sendBooking() { let n = document.getElementById("formName").value.trim(), p = document.getElementById("formPhone").value.trim(), e = document.getElementById("formEmail").value.trim(), v = document.getElementById("formVehicle").value, m = document.getElementById("formMessage").value.trim(); if (!n || !p || !v) { alert("Please fill all required fields!"); return; } if (!/^[0-9]{10}$/.test(p)) { alert("Enter valid 10 digit number!"); return; } if (e && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)) { alert("Enter valid email!"); return; } let msg = `🚗 *Booking Request*%0A%0A👤 *Name:* ${n}%0A📞 *Phone:* ${p}%0A📧 *Email:* ${e || "N/A"}%0A🚘 *Vehicle:* ${v}%0A%0A📝 *Message:*%0A${m || "No message"}`; window.open("https://wa.me/916374049582?text=" + msg, "_blank"); document.getElementById("bookingForm").reset(); }
+        window.sendBooking = sendBooking;
+        console.log('✅ SSA Travels Ready!');
+    </script>
+</body>
+
+</html>
